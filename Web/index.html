@@ -8,10 +8,24 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="shield-icon">🛡️</div>
-            <h1>URL Safety Checker</h1>
-            <p class="subtitle">Protect yourself from malicious websites</p>
+        <div class="header" style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+            <div style="display:flex; align-items:center; gap:15px;">
+                <div class="shield-icon">🛡️</div>
+                <div>
+                    <h1>URL Safety Checker</h1>
+                    <p class="subtitle">Protect yourself from malicious websites</p>
+                </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div id="userEmail" style="color:#444; font-weight:600;"></div>
+                <a id="authBtn" class="telegram-btn" href="login.html" style="padding:8px 16px; border-radius:12px; font-size:14px;">
+                    Login
+                </a>
+                <a href="clock.html" class="telegram-btn" style="padding:8px 16px; border-radius:12px; font-size:14px;">
+                    ⏱️ Clock
+                </a>
+            </div>
         </div>
 
         <div class="features">
@@ -54,6 +68,47 @@
         </div>
     </div>
 
+    <script src="auth.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Update UI based on auth state
+        (function () {
+            const authBtn = document.getElementById('authBtn');
+            const userEmailSpan = document.getElementById('userEmail');
+
+            function refreshAuthUI() {
+                const user = getCurrentUser();
+                if (user && user.email) {
+                    userEmailSpan.textContent = user.email;
+                    authBtn.textContent = 'Logout';
+                    authBtn.href = '#';
+                } else {
+                    userEmailSpan.textContent = '';
+                    authBtn.textContent = 'Login';
+                    authBtn.href = 'login.html';
+                }
+            }
+
+            authBtn.addEventListener('click', function (e) {
+                const user = getCurrentUser();
+                if (user && user.email) {
+                    // Logout
+                    e.preventDefault();
+                    clearCurrentUser();
+                    refreshAuthUI();
+                    const result = document.getElementById('result');
+                    result.innerHTML = '🔓 Logged out';
+                    result.className = 'result show';
+                    setTimeout(() => {
+                        result.className = 'result';
+                        result.innerHTML = '';
+                    }, 1500);
+                }
+            });
+
+            document.addEventListener('DOMContentLoaded', refreshAuthUI);
+        })();
+    </script>
 </body>
 </html>

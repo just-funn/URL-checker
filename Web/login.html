@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login — URL Safety Checker</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-card">
+            <div class="shield">🛡️</div>
+            <h2>Sign in to URL Safety Checker</h2>
+            <p class="muted">Enter your demo credentials to continue</p>
+
+            <form id="loginForm" autocomplete="off">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com" required />
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="••••••••" required />
+
+                <button id="submitBtn" type="submit">Sign In</button>
+
+                <div id="msg" class="msg"></div>
+
+                <p class="demo-note">
+                    Demo credentials: <strong>demo@user.com</strong> / <strong>demo123</strong>
+                </p>
+
+                <p style="margin-top:18px;">
+                    <a href="index.html" class="back-link">← Back to checker</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
