@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>World Clock — URL Safety Checker</title>
+    <link rel="stylesheet" href="clock.css" />
+</head>
+<body>
+    <div class="clock-container">
+        <header class="clock-header">
+            <div class="shield">🕒</div>
+            <h1>World Clock</h1>
+            <p class="subtitle">Current time in multiple time zones — updates every second</p>
+            <div class="controls">
+                <select id="timezoneSelect">
+                    <option value="UTC">UTC</option>
+                    <option value="local">Local Time</option>
+                    <option value="America/New_York">America/New_York (ET)</option>
+                    <option value="America/Los_Angeles">America/Los_Angeles (PT)</option>
+                    <option value="Europe/London">Europe/London (GMT/BST)</option>
+                    <option value="Europe/Paris">Europe/Paris (CET)</option>
+                    <option value="Asia/Dubai">Asia/Dubai</option>
+                    <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
+                    <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                    <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
+                </select>
+                <button id="addBtn">Add Timezone</button>
+                <a class="back" href="index.html">← Back</a>
+            </div>
+        </header>
+
+        <main id="clocksArea" class="clocks-area"></main>
+    </div>
+
+    <script src="clock.js"></script>
+</body>
+</html>
